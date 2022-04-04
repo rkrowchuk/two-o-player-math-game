@@ -1,8 +1,8 @@
 class Question 
   attr_accessor :turn, :num1, :num2
 
-  def initialize
-    @turn = 1
+  def initialize(turn)
+    @turn = turn
   end
 
   def ask
