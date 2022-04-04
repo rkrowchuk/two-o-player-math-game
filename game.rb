@@ -43,6 +43,7 @@ class Game
     else @winner = "Player 2"
     end
     puts "The winner is #{@winner}!"
+    puts "FINAL SCORE: #{@player_1.name} lives: #{@player_1.lives}, #{@player_2.name} lives: #{@player_2.lives}"
   end
 
 end

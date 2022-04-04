@@ -9,7 +9,7 @@ class Question
     @num1 = rand(1..10)
     @num2 = rand(1..10)
     puts "------NEW TURN------"
-    puts "What is #{num1} + #{num2}?"
+    puts "Player #{@turn}: What is #{num1} + #{num2}?"
     print "> "
     answer = $stdin.gets.chomp.to_i
     check_answer(@num1, @num2, answer)
@@ -21,7 +21,7 @@ class Question
     else return false
     end 
   end
-    
+
 end
 
 
