@@ -12,13 +12,16 @@ class Question
     puts "What is #{num1} + #{num2}?"
     print "> "
     answer = $stdin.gets.chomp.to_i
-    if answer == (num1 + num2)
-      puts "Correct!"
-    else puts "Sorry, you're wrong. You lost a life."
-    end
+    check_answer(@num1, @num2, answer)
   end 
 
-
+  def check_answer(num1, num2, answer)
+    if answer == (num1 + num2)
+      return true
+    else return false
+    end 
+  end
+    
 end
 
 

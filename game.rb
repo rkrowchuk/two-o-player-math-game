@@ -7,20 +7,24 @@ class Game
     @player_2 = Player.new("Player 2")    
   end
 
-  def to_s
-    "Welcome! #{@player_1.name} goes first."
-  end
-
   def start 
-    puts self.to_s
-    question_1 = Question.new(@turn)
-    puts question_1.ask
+    puts "#{@player_1.name} lives: #{@player_1.lives}, #{@player_2.name} lives: #{@player_2.lives}"
+    question = Question.new(@turn)
+    if !question.ask
+      lose_life(@turn)
+      puts "Oh no, you lost a life."
+    else puts "Correct!"
+    end
+    if @player_1.lives == 0 || @player_2.lives == 0
+      game_end
+    else change_turn(@turn) 
+    end
   end
 
-  def change_turn
-    if @turn == 1
+  def change_turn(turn)
+    if turn == 1
       @turn = 2
-    else @turn = 2
+    else @turn = 1
     end
     start
   end
@@ -28,9 +32,17 @@ class Game
   def lose_life(turn)
     if turn == 1
       @player_1.lives -= 1
-    else @player_2.lives -= 2
+    else @player_2.lives -= 1
     end
   end
 
+  def game_end
+    puts "-----GAME OVER-----"
+    if @player_1.lives > 0
+    @winner = "Player 1"
+    else @winner = "Player 2"
+    end
+    puts "The winner is #{@winner}!"
+  end
 
 end
